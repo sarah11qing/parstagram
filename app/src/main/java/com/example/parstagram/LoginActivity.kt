@@ -61,6 +61,7 @@ class LoginActivity : AppCompatActivity() {
         ParseUser.logInInBackground(username, password, ({ user, e ->
             if (user != null) {
                 Log.i(TAG, "Successfully logged in")
+                goToMainActivity()
             } else {
                 e.printStackTrace()
                 Toast.makeText(this, "Error logging in", Toast.LENGTH_SHORT).show()

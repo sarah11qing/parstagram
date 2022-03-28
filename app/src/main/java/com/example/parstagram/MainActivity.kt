@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity() {
             val user = ParseUser.getCurrentUser()
             if (photoFile != null) {
                 submitPost(description, user, photoFile!!)
+                Toast.makeText(this, "Successfully post a picture!", Toast.LENGTH_SHORT).show()
             } else {
                 // TODO: print error log message
                 // TODO: show a toast to the user to let them know to take a picture
@@ -55,6 +56,21 @@ class MainActivity : AppCompatActivity() {
         }
 
         queryPosts()
+
+        findViewById<Button>(R.id.btnLogout).setOnClickListener {
+            logoutUser()
+            goToLoginActivity()
+        }
+    }
+
+    private fun goToLoginActivity() {
+        val intent = Intent(this@MainActivity, LoginActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun logoutUser() {
+        ParseUser.logOut()
     }
 
 
@@ -76,8 +92,11 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Saving post error!", Toast.LENGTH_SHORT).show()
             } else {
                 Log.i(TAG, "Successfully saved post")
+                Toast.makeText(this, "Successfully post on Parstagram!", Toast.LENGTH_SHORT).show()
                 // TODO: Reset the EditText field to be empty
+                findViewById<EditText>(R.id.etDescription).setText("")
                 // TODO: Reset the ImageView to empty
+                findViewById<ImageView>(R.id.ivPicture).setImageResource(android.R.color.transparent)
             }
         }
     }
