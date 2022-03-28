@@ -71,6 +71,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun logoutUser() {
         ParseUser.logOut()
+        Toast.makeText(this, "Successfully logged out!", Toast.LENGTH_SHORT).show()
     }
 
 
