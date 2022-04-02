@@ -17,9 +17,11 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
+import com.example.parstagram.LoginActivity
 import com.example.parstagram.MainActivity
 import com.example.parstagram.Post
 import com.example.parstagram.R
+import com.parse.Parse.getApplicationContext
 import com.parse.ParseFile
 import com.parse.ParseUser
 import java.io.File
@@ -68,6 +70,11 @@ class ComposeFragment : Fragment() {
         }
 
         ivPreview = view.findViewById(R.id.ivPicture)
+
+        view.findViewById<Button>(R.id.btnLogout).setOnClickListener {
+            logoutUser()
+            goToLoginActivity()
+        }
     }
 
 
@@ -163,21 +170,19 @@ class ComposeFragment : Fragment() {
             }
         }
     }
+
+    fun logoutUser() {
+        ParseUser.logOut()
+        Toast.makeText(requireContext(), "Successfully logged out!", Toast.LENGTH_SHORT).show()
+    }
+
+    fun goToLoginActivity() {
+        val intent = Intent(getApplicationContext(), LoginActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun finish() {
+        TODO("Not yet implemented")
+    }
 }
-
-
-//        view.findViewById<Button>(R.id.btnLogout).setOnClickListener {
-//            logoutUser()
-//            goToLoginActivity()
-//        }
-
-//    fun logoutUser() {
-//        ParseUser.logOut()
-//        Toast.makeText(this, "Successfully logged out!", Toast.LENGTH_SHORT).show()
-//    }
-//
-//    fun goToLoginActivity() {
-//        val intent = Intent(this@MainActivity, LoginActivity::class.java)
-//        startActivity(intent)
-//        finish()
-//    }
