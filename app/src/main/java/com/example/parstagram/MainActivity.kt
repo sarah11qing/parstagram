@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.example.parstagram.fragments.ComposeFragment
 import com.example.parstagram.fragments.FeedFragment
+import com.example.parstagram.fragments.ProfileFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.parse.*
 import java.io.File
@@ -47,7 +48,7 @@ class MainActivity : AppCompatActivity() {
             when (item.itemId) {
 
                 R.id.action_home -> {
-                    // TODO: Navigate to the home screen
+                    // Navigate to the home screen
                     fragmentToShow = FeedFragment()
                 }
                 R.id.action_compose -> {
@@ -55,7 +56,8 @@ class MainActivity : AppCompatActivity() {
                     fragmentToShow = ComposeFragment()
                 }
                 R.id.action_profile -> {
-                    // TODO: Navigate to the profile screen
+                    // Navigate to the profile screen
+                    fragmentToShow = ProfileFragment()
                 }
             }
 

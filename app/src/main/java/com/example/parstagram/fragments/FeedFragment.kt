@@ -17,7 +17,7 @@ import com.parse.ParseException
 import com.parse.ParseQuery
 
 
-class FeedFragment : Fragment() {
+open class FeedFragment : Fragment() {
 
     lateinit var postsRecyclerView: RecyclerView
 
@@ -55,12 +55,13 @@ class FeedFragment : Fragment() {
 
     }
 
-    fun queryPosts() {
+    open fun queryPosts() {
         // Specify which class to query
         val query: ParseQuery<Post> = ParseQuery.getQuery(Post::class.java)
 
         // Find all Post objects
         query.include(Post.KEY_USER)
+
         // Return posts in descending order
         query.addDescendingOrder("createAt")
         query.findInBackground(object: FindCallback<Post> {

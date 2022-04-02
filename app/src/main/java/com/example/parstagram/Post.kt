@@ -36,9 +36,14 @@ class Post : ParseObject() {
         put(KEY_USER, user)
     }
 
+    fun getFormattedTimestamp(): String {
+        return TimeFormatter.getTimeDifference("created_At")
+    }
+
     companion object {
         const val KEY_DESCRIPTION = "description"
         const val KEY_IMAGE = "image"
         const val KEY_USER = "user"
+//        const val KEY_TIMESTAMP = "timestamp"
     }
 }
