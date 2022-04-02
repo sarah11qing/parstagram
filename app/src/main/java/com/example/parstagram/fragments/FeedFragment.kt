@@ -64,6 +64,7 @@ open class FeedFragment : Fragment() {
 
         // Return posts in descending order
         query.addDescendingOrder("createAt")
+
         query.findInBackground(object: FindCallback<Post> {
             override fun done(posts: MutableList<Post>?, e: ParseException?) {
                 if (e != null) {
